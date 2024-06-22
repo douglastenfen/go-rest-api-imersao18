@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/douglastenfen/go-rest-api/internal/models"
 	"github.com/douglastenfen/go-rest-api/internal/repository"
 	"github.com/gorilla/mux"
 )
@@ -34,11 +33,16 @@ func GetSpotsByEventId(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var eventSpots []models.Spot
+	var eventSpots []string
 	for _, spot := range data.Spots {
 		if spot.EventID == eventId {
-			eventSpots = append(eventSpots, spot)
+			eventSpots = append(eventSpots, spot.Name)
 		}
+	}
+
+	if len(eventSpots) == 0 {
+		http.Error(w, "No spots found for this event", http.StatusNotFound)
+		return
 	}
 
 	json.NewEncoder(w).Encode(eventSpots)
