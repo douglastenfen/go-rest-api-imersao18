@@ -1,4 +1,4 @@
-# Imersão Fullcycle 18 - Desafio API de parceiros
+# Imersão Fullcycle 18 - Desafio API REST GO
 
 ![Imersão Full Stack && Full Cycle](https://events-fullcycle.s3.amazonaws.com/events-fullcycle/static/site/img/grupo_4417.png)
 
